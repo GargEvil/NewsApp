@@ -65,7 +65,7 @@ namespace NewsApp.Controllers
                     viewModel.imageUrl = "auto.jpg";
                     break;
                 case 8:
-                    viewModel.imageUrl = "crnhronika.jpg";
+                    viewModel.imageUrl = "crnahronika.jpg";
                     break;
                 default:
                     viewModel.imageUrl = "noimage.jpg";
