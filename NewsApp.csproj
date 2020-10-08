@@ -193,9 +193,18 @@
     <Compile Include="Migrations\202010062008072_PopulatingCategoryTable.Designer.cs">
       <DependentUpon>202010062008072_PopulatingCategoryTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010081025386_ExpandingApplicationUserTable.cs" />
+    <Compile Include="Migrations\202010081025386_ExpandingApplicationUserTable.Designer.cs">
+      <DependentUpon>202010081025386_ExpandingApplicationUserTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010081041046_ExcludingRequiredPropName.cs" />
+    <Compile Include="Migrations\202010081041046_ExcludingRequiredPropName.Designer.cs">
+      <DependentUpon>202010081041046_ExcludingRequiredPropName.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ApplicationUser.cs" />
+    <Compile Include="Models\ApplicationDbContext.cs" />
     <Compile Include="Models\Kategorija.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\News.cs" />
@@ -467,6 +476,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010062008072_PopulatingCategoryTable.resx">
       <DependentUpon>202010062008072_PopulatingCategoryTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010081025386_ExpandingApplicationUserTable.resx">
+      <DependentUpon>202010081025386_ExpandingApplicationUserTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010081041046_ExcludingRequiredPropName.resx">
+      <DependentUpon>202010081041046_ExcludingRequiredPropName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

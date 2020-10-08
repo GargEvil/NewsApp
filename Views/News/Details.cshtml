@@ -13,14 +13,14 @@
         </div>
         <div class="card-content">
             <div class="media-content">
-                <h1>@Model.Title</h1> <p>@Model.Author</p>
+                <h1>@Model.Title</h1> <p>@Model.Author.Name</p>
                 <p>@Model.Content</p>
                 <p>Kategorija: @Model.Category.Name</p>
             </div>
 
         </div>
         <footer class="card-footer">
-            @*<a class="button is-link is-rounded is-inverted card-footer-item">Nastavi čitati</a>*@
+          
             @if (User.IsInRole("Admin"))
             {
                 <a href="@Url.Action("Edit","News", new {Id = Model.Id })" class="button is-link is-rounded is-inverted card-footer-item">Edit</a>
