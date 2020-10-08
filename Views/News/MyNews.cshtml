@@ -1,0 +1,43 @@
+﻿@model NewsApp.ViewModel.NewsVM
+@{
+    ViewBag.Title = "MyNews";
+}
+
+<h2>My News</h2>
+
+<table id="news" class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>
+                Title
+            </th>
+            <th>
+                Category
+            </th>
+       
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var news in Model.News)
+            {
+                <tr>
+                    <td>
+                        @Html.ActionLink(news.Title, "Edit", "News", new { id = news.Id }, null)
+                    </td>
+                  <td>
+                      @news.Category.Name
+                  </td>
+               
+                </tr>
+            }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+            $("#news").DataTable();
+        });
+    </script>
+    }

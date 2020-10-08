@@ -1,0 +1,33 @@
+﻿@model NewsApp.ViewModel.NewsFormVM
+@{
+    ViewBag.Title = "AddNews";
+}
+
+<h2>Add News</h2>
+
+
+@using (Html.BeginForm(Model.Action, "News", new { enctype = "multipart/form-data" }))
+{
+@Html.HiddenFor(m => m.Id)
+
+<div class="form-group">
+    @Html.LabelFor(m => m.CategoryId)
+    @Html.DropDownListFor(m => m.CategoryId, new SelectList(Model.Categories, "Id", "Name", Model.CategoryId), "", new { @class = "form-control" })
+</div>
+
+<div class="form-group">
+    @Html.LabelFor(m => m.Title)
+    @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+
+</div>
+<div class="form-group">
+    @Html.LabelFor(m => m.Content)
+    @Html.TextAreaFor(m => m.Content, new { @class = "form-control" })
+
+</div>
+
+
+
+<button type="submit" class="btn btn-primary btn-lg pull-right">Post</button>
+
+}
