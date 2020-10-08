@@ -201,6 +201,14 @@
     <Compile Include="Migrations\202010081041046_ExcludingRequiredPropName.Designer.cs">
       <DependentUpon>202010081041046_ExcludingRequiredPropName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202010081251080_RevertChangesMadeInDb.cs" />
+    <Compile Include="Migrations\202010081251080_RevertChangesMadeInDb.Designer.cs">
+      <DependentUpon>202010081251080_RevertChangesMadeInDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202010081646145_SeedNews.cs" />
+    <Compile Include="Migrations\202010081646145_SeedNews.Designer.cs">
+      <DependentUpon>202010081646145_SeedNews.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -443,7 +451,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\News\NewsForm.cshtml" />
-    <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\MyNews.cshtml" />
     <Content Include="Views\News\Details.cshtml" />
   </ItemGroup>
@@ -482,6 +489,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010081041046_ExcludingRequiredPropName.resx">
       <DependentUpon>202010081041046_ExcludingRequiredPropName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010081251080_RevertChangesMadeInDb.resx">
+      <DependentUpon>202010081251080_RevertChangesMadeInDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202010081646145_SeedNews.resx">
+      <DependentUpon>202010081646145_SeedNews.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -41,8 +41,37 @@ namespace NewsApp.Controllers
         [Authorize(Roles="Admin")]
         public ActionResult AddNews(NewsFormVM viewModel)
         {
-           
-            
+            switch (viewModel.CategoryId)
+            {
+                case 1:
+                    viewModel.imageUrl="news.png";
+                    break;
+                case 2:
+                    viewModel.imageUrl = "biznis.jpg";
+                    break;
+                case 3:
+                    viewModel.imageUrl = "sport.jpg";
+                    break;
+                case 4:
+                    viewModel.imageUrl = "magazin.jpg";
+                    break;
+                case 5:
+                    viewModel.imageUrl = "lifestyle.jpg";
+                    break;
+                case 6:
+                    viewModel.imageUrl = "scitech.png";
+                    break;
+                case 7:
+                    viewModel.imageUrl = "auto.jpg";
+                    break;
+                case 8:
+                    viewModel.imageUrl = "crnhronika.jpg";
+                    break;
+                default:
+                    viewModel.imageUrl = "noimage.jpg";
+                    break;
+            }
+
 
             var news = new News
             {
@@ -51,8 +80,8 @@ namespace NewsApp.Controllers
                 Title = viewModel.Title,
                 Content = viewModel.Content,
                 CategoryId = viewModel.CategoryId,
-              
-                
+                imageUrl=viewModel.imageUrl
+    
             };
 
             _context.News.Add(news);

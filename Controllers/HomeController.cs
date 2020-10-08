@@ -54,98 +54,98 @@ namespace NewsApp.Controllers
             return View();
         }
 
-        public ActionResult CategoryVijesti()
+        public ActionResult CategoryNews()
         {
-            var vijesti = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 1);
+            var news = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 1);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
-                News = vijesti
+                News = news
             };
 
-            return View("Index",VM);
+            return View("Index",vm);
         }
-        public ActionResult CategoryBiznis()
+        public ActionResult CategoryBussiness()
         {
-            var biznis = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 2);
+            var bussiness = _context.News.Include(n=>n.Author).Include(n => n.Category).Where(c => c.CategoryId == 2);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
-                News = biznis
+                News = bussiness
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
 
         public ActionResult CategorySport()
         {
-            var sport = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 3);
+            var sport = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 3);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
                 News = sport
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
 
-        public ActionResult CategoryMagazin()
+        public ActionResult CategoryMagazine()
         {
-            var magazin = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 4);
+            var magazine = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 4);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
-                News = magazin
+                News = magazine
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
         public ActionResult CategoryLifestyle()
         {
-            var lifestyle = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 5);
+            var lifestyle = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 5);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
                 News = lifestyle
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
 
         public ActionResult CategoryScitech()
         {
-            var scitech = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 6);
+            var scitech = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 6);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
                 News = scitech
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
 
         public ActionResult CategoryAuto()
         {
-            var auto = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 7);
+            var auto = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 7);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
                 News = auto
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
 
-        public ActionResult CategoryCrnaHronika()
+        public ActionResult CategoryBlackChronicle()
         {
-            var crnahronika = _context.News.Include(n => n.Category).Where(c => c.CategoryId == 8);
+            var blackchronicle = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 8);
 
-            var VM = new NewsVM
+            var vm = new NewsVM
             {
-                News = crnahronika
+                News = blackchronicle
             };
 
-            return View("Index", VM);
+            return View("Index", vm);
         }
     }
 }
