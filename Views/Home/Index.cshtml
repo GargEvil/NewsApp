@@ -16,32 +16,15 @@
     <link rel="stylesheet" href="~/Content/HomeStyles.css" asp-append-version="true" />
 
 </head>
-<body>
-    @*@using (Html.BeginForm("Search", "News"))
-    {
-
-        <div class="input-group" style="width:100%">
-            @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Title, Author or Content" })
-            <span class="input-group-addon">
-                <i class="glyphicon glyphicon-search"></i>
-            </span>
-        </div>
-
-
-
-
-    }*@
-
+  
 <div id="multi-item-example" class="carousel slide carousel-multi-item" data-ride="HomeStyle">
 
     @using (Html.BeginForm("Search", "News"))
     {
         <div class="form-group">
-            <div class="input-group" style="float:right; width:250px; margin-top:25px; margin-right:80px;">
+            <div class="input-group" style="float:right; width:350px; margin-top:15px; margin-right:80px;">
                 @Html.TextBoxFor(m => m.SearchTerm, new { @class = "form-control", placeholder = "Search by Title, Author or Content" })
-                <span class="input-group-addon">
-                    <i class="glyphicon glyphicon-search"></i>
-                </span>
+                <button class="btn btn-outline-primary" type="submit">Search</button>
             </div>
         </div>
 
@@ -91,7 +74,7 @@
 
     </div>
 </div>
-</body>
+
 </html>
 
 @*<body id="top">

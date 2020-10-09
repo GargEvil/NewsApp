@@ -49,3 +49,7 @@
 .snizen-opacity {
     opacity: 0;
 }
+
+.field-validation-error {
+    color: red;
+}
