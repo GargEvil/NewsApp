@@ -37,12 +37,14 @@ namespace NewsApp.Controllers
 
         }
 
+        [Authorize(Roles = RoleName.Admin)]
         [ValidateAntiForgeryToken]
         [HttpPost]       
-        [Authorize(Roles = RoleName.Admin)]
         public ActionResult AddNews(NewsFormVM viewModel)
         {
-           
+                var userId = User.Identity.GetUserId();
+
+
                 if (!ModelState.IsValid)
                 {
                     var vm = new NewsFormVM
@@ -88,37 +90,23 @@ namespace NewsApp.Controllers
                 }
 
 
-                var news = new News
-                {
-                    AuthorId = User.Identity.GetUserId(),
-                    Date = DateTime.Now,
-                    Title = viewModel.Title,
-                    Content = viewModel.Content,
-                    CategoryId = viewModel.CategoryId,
-                    imageUrl = viewModel.imageUrl
-
-                };
-
+                var news=News.SaveNews(viewModel, userId);
                 _context.News.Add(news);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index", "Home");
-            
-          
+                      
         }
 
         [HttpPost]
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Update(NewsFormVM viewModel)
         {
-
             var news = _context.News
                 .Single(n => n.Id == viewModel.Id);
 
-            news.CategoryId = viewModel.CategoryId;
-            news.Content = viewModel.Content;
-            news.Title = viewModel.Title;
 
+            News.UpdateNews(news, viewModel);
             _context.SaveChanges();
 
            return RedirectToAction("Index", "Home");

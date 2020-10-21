@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using NewsApp.ViewModel;
 
 namespace NewsApp.Models
 {
@@ -31,5 +32,27 @@ namespace NewsApp.Models
         [Required]
         public int CategoryId { get; set; }
 
+        public static News SaveNews(NewsFormVM viewModel, string userId)
+        {
+            var news = new News
+            {
+                AuthorId = userId,
+                Date = DateTime.Now,
+                Title = viewModel.Title,
+                Content = viewModel.Content,
+                CategoryId = viewModel.CategoryId,
+                imageUrl = viewModel.imageUrl
+
+            };
+
+            return news;
+        }
+
+        public static void UpdateNews(News news, NewsFormVM viewModel)
+        {
+            news.CategoryId = viewModel.CategoryId;
+            news.Content = viewModel.Content;
+            news.Title = viewModel.Title;
+        }
     }
 }
