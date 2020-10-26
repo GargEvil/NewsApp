@@ -6,6 +6,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.UI.WebControls;
+using System.Security.Cryptography;
 
 namespace NewsApp.Controllers
 {
@@ -20,24 +22,36 @@ namespace NewsApp.Controllers
 
         public ActionResult Index(string query=null)
         {
-            var allNews = _context.News.Include(n => n.Category)
-                .Include(n => n.Author);
-
-            if(!String.IsNullOrWhiteSpace(query))
+            try
             {
-                allNews = allNews.
-                    Where(n => n.Content.Contains(query) || 
-                    n.Author.UserName.Contains(query) || 
-                    n.Title.Contains(query));
+
+
+                var allNews = _context.News.Include(n => n.Category)
+                    .Include(n => n.Author);
+
+                if (!String.IsNullOrWhiteSpace(query))
+                {
+                    allNews = allNews.
+                        Where(n => n.Content.Contains(query) ||
+                        n.Author.UserName.Contains(query) ||
+                        n.Title.Contains(query));
+                }
+
+                var viewModel = new NewsVM
+                {
+                    News = allNews
+                };
+
+
+                return View(viewModel);
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
 
-            var viewModel = new NewsVM
-            {
-                News = allNews
-            };
-
             
-            return View(viewModel);
         }
 
         public ActionResult About()
@@ -56,96 +70,166 @@ namespace NewsApp.Controllers
 
         public ActionResult CategoryNews()
         {
-            var news = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 1);
-
-            var vm = new NewsVM
+            try
             {
-                News = news
-            };
+                var news = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 1);
 
-            return View("Index",vm);
+                var vm = new NewsVM
+                {
+                    News = news
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public ActionResult CategoryBussiness()
         {
-            var bussiness = _context.News.Include(n=>n.Author).Include(n => n.Category).Where(c => c.CategoryId == 2);
-
-            var vm = new NewsVM
+            try
             {
-                News = bussiness
-            };
+                var bussiness = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 2);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = bussiness
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult CategorySport()
         {
-            var sport = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 3);
-
-            var vm = new NewsVM
+            try
             {
-                News = sport
-            };
+                var sport = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 3);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = sport
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult CategoryMagazine()
         {
-            var magazine = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 4);
-
-            var vm = new NewsVM
+            try
             {
-                News = magazine
-            };
+                var magazine = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 4);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = magazine
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
         public ActionResult CategoryLifestyle()
         {
-            var lifestyle = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 5);
-
-            var vm = new NewsVM
+            try
             {
-                News = lifestyle
-            };
+                var lifestyle = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 5);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = lifestyle
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult CategoryScitech()
         {
-            var scitech = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 6);
-
-            var vm = new NewsVM
+            try
             {
-                News = scitech
-            };
+                var scitech = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 6);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = scitech
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult CategoryAuto()
         {
-            var auto = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 7);
-
-            var vm = new NewsVM
+            try
             {
-                News = auto
-            };
+                var auto = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 7);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = auto
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult CategoryBlackChronicle()
         {
-            var blackchronicle = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 8);
-
-            var vm = new NewsVM
+            try
             {
-                News = blackchronicle
-            };
+                var blackchronicle = _context.News.Include(n => n.Author).Include(n => n.Category).Where(c => c.CategoryId == 8);
 
-            return View("Index", vm);
+                var vm = new NewsVM
+                {
+                    News = blackchronicle
+                };
+
+                return View("Index", vm);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception exception = filterContext.Exception;
+            //Logging the Exception
+            filterContext.ExceptionHandled = true;
+
+
+            var Result = this.View("Error", new HandleErrorInfo(exception,
+                filterContext.RouteData.Values["controller"].ToString(),
+                filterContext.RouteData.Values["action"].ToString()));
+
+            filterContext.Result = Result;
+
         }
     }
 }

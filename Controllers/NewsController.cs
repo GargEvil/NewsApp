@@ -28,12 +28,19 @@ namespace NewsApp.Controllers
 
         public ActionResult AddNews()
         {
-            NewsFormVM viewModel = new NewsFormVM
+            try
             {
-                Categories = _context.Categories.ToList()
-            };
+                NewsFormVM viewModel = new NewsFormVM
+                {
+                    Categories = _context.Categories.ToList()
+                };
 
-            return View("NewsForm",viewModel);
+                return View("NewsForm", viewModel);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
 
         }
 
@@ -42,6 +49,8 @@ namespace NewsApp.Controllers
         [HttpPost]       
         public ActionResult AddNews(NewsFormVM viewModel)
         {
+            try
+            {
                 var userId = User.Identity.GetUserId();
 
 
@@ -90,11 +99,16 @@ namespace NewsApp.Controllers
                 }
 
 
-                var news=News.SaveNews(viewModel, userId);
+                var news = News.SaveNews(viewModel, userId);
                 _context.News.Add(news);
                 _context.SaveChanges();
 
                 return RedirectToAction("Index", "Home");
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
                       
         }
 
@@ -102,14 +116,20 @@ namespace NewsApp.Controllers
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Update(NewsFormVM viewModel)
         {
-            var news = _context.News
-                .Single(n => n.Id == viewModel.Id);
+            try
+            {
+                var news = _context.News
+                    .Single(n => n.Id == viewModel.Id);
 
 
-            News.UpdateNews(news, viewModel);
-            _context.SaveChanges();
+                News.UpdateNews(news, viewModel);
+                _context.SaveChanges();
 
-           return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home");
+            }catch(Exception ex)
+            {
+                throw ex;
+            }
 
 
         }
@@ -118,45 +138,87 @@ namespace NewsApp.Controllers
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult Edit(int id)
         {
-            var news = _context.News.Single(n => n.Id == id);
-
-            var viewModel = new NewsFormVM
+            try
             {
-                Id = news.Id,
-                Title = news.Title,
-                CategoryId = news.CategoryId,
-                Categories = _context.Categories.ToList(),
-                Content = news.Content
-            };
+                var news = _context.News.Single(n => n.Id == id);
 
-            return View("NewsForm",viewModel);
+                var viewModel = new NewsFormVM
+                {
+                    Id = news.Id,
+                    Title = news.Title,
+                    CategoryId = news.CategoryId,
+                    Categories = _context.Categories.ToList(),
+                    Content = news.Content
+                };
+
+                return View("NewsForm", viewModel);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult Search(NewsVM viewModel)
         {
-            return RedirectToAction("Index", "Home", new { query = viewModel.SearchTerm });
+            try
+            {
+                return RedirectToAction("Index", "Home", new { query = viewModel.SearchTerm });
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [Authorize(Roles = RoleName.Admin)]
         public ActionResult MyNews()
         {
-            var allNews = _context.News.Include(n => n.Category)
+            try
+            {
+                var allNews = _context.News.Include(n => n.Category)
                 .Include(n => n.Author);
 
-            var viewModel = new NewsVM
-            {
-                News = allNews
-            };
+                var viewModel = new NewsVM
+                {
+                    News = allNews
+                };
 
-            return View(viewModel);
+                return View(viewModel);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         public ActionResult Details(int id)
         {
-            var news = _context.News.Include(n => n.Category)
-                .Include(n => n.Author).Single(n=>n.Id == id);
+            try
+            {
+                var news = _context.News.Include(n => n.Category)
+                .Include(n => n.Author).Single(n => n.Id == id);
 
-            return View(news);
+                return View(news);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
+        protected override void OnException(ExceptionContext filterContext)
+        {
+            Exception exception = filterContext.Exception;
+            //Logging the Exception
+            filterContext.ExceptionHandled = true;
+
+
+            var Result = this.View("Error", new HandleErrorInfo(exception,
+                filterContext.RouteData.Values["controller"].ToString(),
+                filterContext.RouteData.Values["action"].ToString()));
+
+            filterContext.Result = Result;
+
         }
     }
 }
