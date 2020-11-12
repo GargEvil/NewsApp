@@ -32,27 +32,5 @@ namespace NewsApp.Models
         [Required]
         public int CategoryId { get; set; }
 
-        public static News SaveNews(NewsFormVM viewModel, string userId)
-        {
-            var news = new News
-            {
-                AuthorId = userId,
-                Date = DateTime.Now,
-                Title = viewModel.Title,
-                Content = viewModel.Content,
-                CategoryId = viewModel.CategoryId,
-                imageUrl = viewModel.imageUrl
-
-            };
-
-            return news;
-        }
-
-        public static void UpdateNews(News news, NewsFormVM viewModel)
-        {
-            news.CategoryId = viewModel.CategoryId;
-            news.Content = viewModel.Content;
-            news.Title = viewModel.Title;
-        }
     }
 }

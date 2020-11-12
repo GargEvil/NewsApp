@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
 using System.IO;
+using NewsApp.DataAccess;
 
 namespace NewsApp.Controllers
 {
@@ -99,9 +100,8 @@ namespace NewsApp.Controllers
                 }
 
 
-                var news = News.SaveNews(viewModel, userId);
-                _context.News.Add(news);
-                _context.SaveChanges();
+                NewsManager.Add(viewModel, userId);
+                
 
                 return RedirectToAction("Index", "Home");
             }
@@ -121,11 +121,10 @@ namespace NewsApp.Controllers
                 var news = _context.News
                     .Single(n => n.Id == viewModel.Id);
 
-
-                News.UpdateNews(news, viewModel);
-                _context.SaveChanges();
+                NewsManager.Update(news, viewModel);
 
                 return RedirectToAction("Index", "Home");
+
             }catch(Exception ex)
             {
                 throw ex;
