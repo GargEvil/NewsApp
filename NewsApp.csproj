@@ -223,6 +223,10 @@
     <Compile Include="Migrations\202010081646145_SeedNews.Designer.cs">
       <DependentUpon>202010081646145_SeedNews.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202011230802533_MakingChangeInModel.cs" />
+    <Compile Include="Migrations\202011230802533_MakingChangeInModel.Designer.cs">
+      <DependentUpon>202011230802533_MakingChangeInModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ApplicationUser.cs" />
@@ -608,6 +612,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202010081646145_SeedNews.resx">
       <DependentUpon>202010081646145_SeedNews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202011230802533_MakingChangeInModel.resx">
+      <DependentUpon>202011230802533_MakingChangeInModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

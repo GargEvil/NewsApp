@@ -3,8 +3,28 @@
 @{
     ViewBag.Title = "Details";
 }
+<head>
+    <link rel="stylesheet" href="~/Content/HomeStyles.css" asp-append-version="true" />
+</head>
 
-<div class="col-md-5">
+<div class="container">
+
+    <h1 class="detailHeading">@Model.Title</h1>
+    <hr />
+    <div class="img-thumbnail">
+        <img class="card-imageDTL" src="~/images/@Model.imageUrl" />
+    </div>
+    <hr />
+    <div class=" ">
+        @Model.Content
+    </div>
+    <hr />
+    @if (User.IsInRole("Admin"))
+    {
+        <a href="@Url.Action("Edit","News", new {Id = Model.Id })" class="button is-link is-rounded is-inverted card-footer-item">Edit</a>
+    }
+</div>
+@*<div class="col-md-5">
     <div class="card" style="transform:scale(0.9); margin:auto;">
         <div class="card-image">
             <figure class="img-thumbnail" style="transform:scale(1.2)">
@@ -30,5 +50,5 @@
         </footer>
 
     </div>
-</div>
+</div>*@
 
